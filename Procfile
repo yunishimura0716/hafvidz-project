@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn hofvidz.wsgi
+web: gunicorn hafvidz.wsgi
