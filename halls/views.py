@@ -12,8 +12,10 @@ import requests
 from django.forms.utils import ErrorList
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+import local_loading
+import os
 
-YOUTUBE_API_KEY = 'AIzaSyDusMXhzEdGHNWbavI7w9eKnRZIbRnZ1uQ'
+YOUTUBE_API_KEY = os.environ.get('YOUTUBE_API_KEY')
 
 def home(request):
     recent_halls = Hall.objects.all().order_by('-id')[:3]

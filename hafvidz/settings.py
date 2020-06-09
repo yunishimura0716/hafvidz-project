@@ -27,6 +27,7 @@ SECRET_KEY = '9@9u@$rffppah^w0+#a4+q3t_mi#jcrq3e+)41_0fh_13oc^13'
 DEBUG = False
 
 ALLOWED_HOSTS = ['pacific-reaches-94491.herokuapp.com', 'hofvidz.com', 'www.hofvidz.com']
+# ALLOWED_HOSTS = ['*']
 
 
 LOGIN_URL = 'login'
