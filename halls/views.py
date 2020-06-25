@@ -12,7 +12,6 @@ import requests
 from django.forms.utils import ErrorList
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-import local_loading
 import os
 import environ
 env = environ.Env()
