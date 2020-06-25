@@ -14,8 +14,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import local_loading
 import os
+import environ
+env = environ.Env()
+# check if the environment is heroku
+HEROKU_ENV = env.bool('DJANGO_HEROKU_ENV', default=False)
+#if not heroku
+if not HEROKU_ENV:
+    env.read_env('.env')
 
-YOUTUBE_API_KEY = os.environ.get('YOUTUBE_API_KEY')
+YOUTUBE_API_KEY = env('YOUTUBE_API_KEY')
 
 def home(request):
     recent_halls = Hall.objects.all().order_by('-id')[:3]

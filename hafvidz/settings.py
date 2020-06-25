@@ -12,6 +12,13 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import dj_database_url
+import environ
+env = environ.Env()
+# check if the environment is heroku
+HEROKU_ENV = env.bool('DJANGO_HEROKU_ENV', default=False)
+#if not heroku
+if not HEROKU_ENV:
+    env.read_env('.env')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,10 +28,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9@9u@$rffppah^w0+#a4+q3t_mi#jcrq3e+)41_0fh_13oc^13'
+SECRET_KEY=env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG=env.bool('DEBUG', False)
 
 ALLOWED_HOSTS = ['pacific-reaches-94491.herokuapp.com', 'hofvidz.com', 'www.hofvidz.com']
 # ALLOWED_HOSTS = ['*']
